@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,8 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using WingsOn.Api.Services;
 using WingsOn.Dal;
-using WingsOn.Domain;
-using WingsOn.Domain.Dto;
 using WingsOn.Domain.Repository;
 using WingsOn.Domain.Services;
 
@@ -45,9 +42,6 @@ namespace WingsOn.Api
             // Register repositories
             services.AddTransient<IPersonRepository, PersonRepository>();
             services.AddTransient<IBookingRepository, BookingRepository>();
-
-            // Register mappers
-            Mapper.Initialize(config => { config.CreateMap<Person, PersonDto>().ReverseMap(); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
