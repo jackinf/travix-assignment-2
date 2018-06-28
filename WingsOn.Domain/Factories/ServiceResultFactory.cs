@@ -11,7 +11,8 @@ namespace WingsOn.Domain.Factories
             {
                 IsSuccessful = true,
                 Payload = payload,
-                Message = message
+                Message = message,
+                StatusCode = HttpStatusCode.OK
             };
         }
 
@@ -20,8 +21,7 @@ namespace WingsOn.Domain.Factories
             return new ServiceResult<TPayload>
             {
                 IsSuccessful = false,
-                Message = errorMessage,
-                StatusCode = (HttpStatusCode)422
+                Message = errorMessage
             };
         }
     }

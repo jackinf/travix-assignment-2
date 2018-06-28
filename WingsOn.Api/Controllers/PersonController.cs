@@ -13,14 +13,14 @@ namespace WingsOn.Api.Controllers
         public PersonController(ILogger<PersonController> logger, IPersonService personService) : base(logger) 
             => _personService = personService;
 
-        [Route("{id:number}")]
+        [Route("{id:int}")]
         [HttpGet]
-        public IActionResult Get(int id) => HandleResult(() 
+        public IActionResult Get([FromRoute] int id) => HandleResult(() 
             => _personService.GetSingle(id));
 
         [Route("male-only")]
         [HttpGet]
         public IActionResult GetAllMale([FromQuery] PersonSearchRequestDto options) 
-            => HandleResult(() => _personService.GetAllMale(options));
+            => HandleResult(() => _personService.GetAllMale());
     }
 }

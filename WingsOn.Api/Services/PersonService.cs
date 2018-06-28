@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
+using WingsOn.Domain;
 using WingsOn.Domain.Dto;
 using WingsOn.Domain.Dto.Requests;
 using WingsOn.Domain.Dto.Results;
@@ -31,11 +32,9 @@ namespace WingsOn.Api.Services
             return ServiceResultFactory.Success(dto);
         }
 
-        public ServiceResult<List<PersonDto>> GetAllMale(PersonSearchRequestDto options)
+        public ServiceResult<List<PersonDto>> GetAllMale()
         {
-            GuardUtils.ArgumentNotNull(options, nameof(options), "No filters have been supplied.");
-
-            var results = _personRepository.Search(options);
+            var results = _personRepository.Search(new PersonSearchRequestDto { Gender = GenderType.Male });
             var dtos = Mapper.Map<List<PersonDto>>(results);
             return ServiceResultFactory.Success(dtos);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using WingsOn.Domain;
 using WingsOn.Domain.Dto.Requests;
 using WingsOn.Domain.Repository;
@@ -119,7 +120,12 @@ namespace WingsOn.Dal
 
         public List<Person> Search(PersonSearchRequestDto options)
         {
-            throw new NotImplementedException();
+            var query = GetAll();
+
+            if (options.Gender != null)
+                query = query.Where(x => x.Gender == options.Gender); // If this would have been IQueryable, I'd compose it like this
+
+            return query.ToList();
         }
     }
 }

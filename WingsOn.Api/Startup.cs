@@ -28,8 +28,8 @@ namespace WingsOn.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Register services
-            services.AddTransient<IPersonService, IPersonService>();
-            services.AddTransient<IBookingService, BookingService>();
+            services.AddTransient<IPersonService, PersonService>();
+            services.AddTransient<IFlightsService, FlightsService>();
 
             // Register repositories
             services.AddTransient<IPersonRepository, PersonRepository>();

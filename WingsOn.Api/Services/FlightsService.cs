@@ -12,11 +12,11 @@ using WingsOn.Domain.Utils;
 
 namespace WingsOn.Api.Services
 {
-    public class BookingService : IBookingService
+    public class FlightsService : IFlightsService
     {
         private readonly IBookingRepository _bookingRepository;
 
-        public BookingService(IBookingRepository bookingRepository) 
+        public FlightsService(IBookingRepository bookingRepository) 
             => _bookingRepository = bookingRepository;
 
         public ServiceResult<List<PersonDto>> GetPassengers(string flightNumber)

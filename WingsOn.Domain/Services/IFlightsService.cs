@@ -4,7 +4,7 @@ using WingsOn.Domain.Dto.Results;
 
 namespace WingsOn.Domain.Services
 {
-    public interface IBookingService
+    public interface IFlightsService
     {
         ServiceResult<List<PersonDto>> GetPassengers(string flightNumber);
     }

@@ -55,7 +55,7 @@
     <Compile Include="Repository\IBookingRepository.cs" />
     <Compile Include="Repository\IPersonRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Services\IBookingService.cs" />
+    <Compile Include="Services\IFlightsService.cs" />
     <Compile Include="Services\IPersonService.cs" />
     <Compile Include="Utils\GuardUtils.cs" />
   </ItemGroup>
