@@ -1,9 +1,12 @@
-﻿using AutoMapper;
+﻿using System;
+using System.IO;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using WingsOn.Api.Services;
 using WingsOn.Dal;
 using WingsOn.Domain;
@@ -27,6 +30,14 @@ namespace WingsOn.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "WingsOn API", Version = "v1" });
+                c.IncludeXmlComments(
+                    Path.Combine(AppContext.BaseDirectory, GetType().Assembly.GetName().Name + ".xml"),
+                    includeControllerXmlComments: true);
+            });
+
             // Register services
             services.AddTransient<IPersonService, PersonService>();
             services.AddTransient<IFlightsService, FlightsService>();
@@ -48,6 +59,13 @@ namespace WingsOn.Api
             }
 
             app.UseMvc();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "WingsOn API v1");
+                c.RoutePrefix = "";
+            });
         }
     }
 }
