@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WingsOn.Domain.Dto.Requests;
 using WingsOn.Domain.Services;
 
 namespace WingsOn.Api.Controllers
@@ -20,7 +19,7 @@ namespace WingsOn.Api.Controllers
 
         [Route("male-only")]
         [HttpGet]
-        public IActionResult GetAllMale([FromQuery] PersonSearchRequestDto options) 
+        public IActionResult GetAllMale() 
             => HandleResult(() => _personService.GetAllMale());
     }
 }

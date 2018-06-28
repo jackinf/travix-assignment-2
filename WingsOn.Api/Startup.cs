@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using WingsOn.Api.Services;
 using WingsOn.Dal;
+using WingsOn.Domain;
+using WingsOn.Domain.Dto;
 using WingsOn.Domain.Repository;
 using WingsOn.Domain.Services;
 
@@ -15,6 +18,12 @@ namespace WingsOn.Api
 {
     public class Startup
     {
+        static Startup()
+        {
+            // Register mappers. TODO: It is currently in static constructor, because it will be on a single thread and run only once. Does not break async unit tests. Though there are better ways of resolving this.
+            Mapper.Initialize(config => { config.CreateMap<Person, PersonDto>().ReverseMap(); });
+        }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

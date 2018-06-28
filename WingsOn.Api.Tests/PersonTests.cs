@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using WingsOn.Api.Tests.Utils;
@@ -14,7 +13,7 @@ using Xunit;
 
 namespace WingsOn.Api.Tests
 {
-    public class PersonTests : BaseTests
+    public class PersonTests
     {
         [Fact]
         public async Task GetSpecific()
@@ -32,7 +31,7 @@ namespace WingsOn.Api.Tests
                     var person = result.Payload;
                     Assert.NotNull(person);
                     Assert.Equal("805-1408 Mi Rd.", person.Address);
-                    Assert.Equal(DateTime.Parse("24/09/1980", CultureInfo), person.DateBirth);
+                    Assert.Equal(DateTime.Parse("24/09/1980", new CultureInfo("nl-NL")), person.DateBirth);
                     Assert.Equal("egestas.a.dui@aliquet.ca", person.Email);
                     Assert.Equal(GenderType.Male, person.Gender);
                     Assert.Equal("Kendall Velazquez", person.Name);

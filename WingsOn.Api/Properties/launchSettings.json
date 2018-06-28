@@ -20,7 +20,6 @@
     "WingsOn.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/person/91",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

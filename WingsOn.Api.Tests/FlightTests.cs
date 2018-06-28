@@ -13,7 +13,7 @@ using Xunit;
 
 namespace WingsOn.Api.Tests
 {
-    public class FlightTests : BaseTests
+    public class FlightTests
     {
         [Fact]
         public async Task GetPassengersOfFlight()
